@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context = "http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/util
+   http://www.springframework.org/schema/util/spring-util.xsd">
+  
+ <bean id="dao" class="com.dao.CustomerDaoImpl"/>
+  <bean id="profileDao" class="com.dao.ProfileDaoImpl"/>
+  <bean id="cartDao" class="com.dao.CartDaoImpl"/>
+  <bean id="filedao" class="com.dao.FileUploadDAOImpl"/>
+       <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+      	id="dmds"
+      	p:driverClassName="com.mysql.cj.jdbc.Driver"
+      	p:url="jdbc:mysql:///shop"
+      	p:username="root"
+      	p:password="MYSQL"/>
+      
+      <bean class="org.springframework.jdbc.core.JdbcTemplate" 
+      		id="jt"
+      		p:dataSource-ref="dmds"/>
+     
+ <context:component-scan base-package="com.dao"/>
+  </beans>
+  
+     
